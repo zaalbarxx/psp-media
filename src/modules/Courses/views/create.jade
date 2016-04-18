@@ -1,0 +1,42 @@
+.container.m-t-lg
+    .row
+        .col-xs-12.col-md-6
+            h1 Create Course
+            form(name="CreateCourseCtrl.form")
+                .input-group
+                    input#begin.form-control(
+                        type="text"
+                        placeholder="Begin Date"
+                        ng-model="CreateCourseCtrl.course.begin"
+                        ng-required="true"
+                        is-open="CreateCourseCtrl.popups.begin.opened"
+                        uib-datepicker-popup="yyyy-MM-dd"
+                        datepicker-options="CreateCourseCtrl.dateOptions"
+                    )
+                    span.input-group-btn
+                        button.btn.btn-default(type="button" ng-click="CreateCourseCtrl.openPopup('begin')")
+                            i.glyphicon.glyphicon.glyphicon-calendar
+                .input-group.m-t-lg
+                    input#end.form-control(
+                        type="text"
+                        placeholder="End Date"
+                        ng-model="CreateCourseCtrl.course.end"
+                        ng-required="true"
+                        is-open="CreateCourseCtrl.popups.end.opened"
+                        uib-datepicker-popup="yyyy-MM-dd"
+                        datepicker-options="CreateCourseCtrl.dateOptions"
+                    )
+                    span.input-group-btn
+                        button.btn.btn-default(type="button" ng-click="CreateCourseCtrl.openPopup('end')")
+                            i.glyphicon.glyphicon.glyphicon-calendar
+                .form-group
+                    label Candidate Limit
+                    h-number(
+                        value="CreateCourseCtrl.course.candidate_limit"
+                        ng-required="true"
+                    )
+                button.btn.btn-success.btn-block(
+                    type="submit"
+                    ng-click="CreateCourseCtrl.create()"
+                    ng-disabled="CreateCourseCtrl.form.$invalid"
+                ) Create

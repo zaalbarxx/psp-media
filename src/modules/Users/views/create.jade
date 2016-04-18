@@ -1,0 +1,20 @@
+.container.m-t-lg
+    .row
+        .col-xs-12.col-md-6
+            h1 Create User
+            form(name="CreateUserCtrl.form")
+                .form-group
+                    .btn-group
+                        label.btn.btn-success(ng-model="CreateUserCtrl.user.gender" uib-btn-radio="'m'") Male
+                        label.btn.btn-success(ng-model="CreateUserCtrl.user.gender" uib-btn-radio="'f'") Female
+                .form-group
+                    label(for="firstName") First Name
+                        input#firstName.form-control(type="text" ng-model="CreateUserCtrl.user.first_name" ng-required="true")
+                .form-group
+                    label(for="lastName") Last Name
+                        input#lastName.form-control(type="text" ng-model="CreateUserCtrl.user.last_name" ng-required="true")
+                button.btn.btn-success.btn-block(
+                    type="submit"
+                    ng-click="CreateUserCtrl.create()"
+                    ng-disabled="CreateUserCtrl.form.$invalid"
+                ) Create

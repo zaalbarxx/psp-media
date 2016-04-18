@@ -1,0 +1,27 @@
+.container.m-t-lg
+    .row
+        .col-lg-12
+            h1 Courses List
+            div
+                a.btn.btn-primary(ui-sref="courses.create") Create
+            table.table.table-striped(st-table="CoursesCtrl.courses")
+                thead
+                    tr
+                        th ID
+                        th Title
+                        th Candidates no.
+                        th Begin
+                        th End
+                        th Manage Candidates
+                tbody
+                    tr(ng-repeat="course in CoursesCtrl.courses")
+                        td {{course.id}}
+                        td {{course.title}}
+                        td {{course.candidates.length}}
+                        td {{course.begin | date}}
+                        td {{course.end | date}}
+                        td
+                            button.btn.btn-primary(
+                                type="button"
+                                ng-click="CoursesCtrl.manageCourseCandidates(course)"
+                            ) Manage Candidates

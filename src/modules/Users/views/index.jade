@@ -1,0 +1,19 @@
+.container.m-t-lg
+    .row
+        .col-lg-12
+            h1 Users List
+            div
+                a.btn.btn-primary(ui-sref="users.create") Create
+            table.table.table-striped(st-table="UsersCtrl.users")
+                thead
+                    tr
+                        th ID
+                        th Gender
+                        th First Name
+                        th Last Name
+                tbody
+                    tr(ng-repeat="user in UsersCtrl.users")
+                        td {{user.id}}
+                        td {{user.gender}}
+                        td {{user.first_name}}
+                        td {{user.last_name}}

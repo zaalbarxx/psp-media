@@ -1,0 +1,19 @@
+.modal-header
+    h3 Manage Candidates
+    span.label.label-default
+        |   You can add {{ManageCandidatesCtrl.course.candidate_limit - ManageCandidatesCtrl.course.candidates.length}} more candidates
+.modal-body
+    h4 Current Candidates
+    ul.list-group.course__current-candidates-list
+        li.list-group-item(ng-repeat="candidate in ManageCandidatesCtrl.course.candidates")
+            | {{candidate.first_name + ' ' + candidate.last_name}}
+            button.btn.btn-danger(type="button" ng-click="ManageCandidatesCtrl.remove(candidate, $index)") Remove
+    hr
+    h4 Add Candidate
+        form(name="ManageCandidatesCtrl.newCandidateForm")
+            select.form-control(ng-model="ManageCandidatesCtrl.newCandidateId"
+                ng-required="true")
+                option(value="") Select Candidate
+                option(ng-repeat="user in ManageCandidatesCtrl.users" value="{{user.id}}") {{user.first_name}} {{user.last_name}}
+            button.btn.btn-primary.m-t-lg(ng-click="ManageCandidatesCtrl.add()"
+                ng-disabled="ManageCandidatesCtrl.newCandidateForm.$invalid") Add Candidate
